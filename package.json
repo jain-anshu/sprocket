@@ -1,0 +1,65 @@
+{
+  "name": "sprockets",
+  "description": "",
+  "version": "1.0.0",
+  "main": "dist/app.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "nodemon",
+    "inspect": "nodemon --inspect src/app.ts",
+    "lint": "npm run lint:js ",
+    "lint:eslint": "eslint --ignore-path .gitignore --ext .ts",
+    "lint:js": "npm run lint:eslint src/",
+    "lint:fix": "npm run lint:js -- --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/"
+  },
+  "homepage": "https://github.com/#readme",
+  "mikro-orm": {
+    "useTsNode": true,
+    "configPaths": [
+      "./src/config/mikro-orm.config.ts",
+      "./dist/mikro-orm.config.js"
+    ]
+  },
+  "dependencies": {
+    "@mikro-orm/cli": "^5.6.14",
+    "@mikro-orm/core": "^5.6.14",
+    "@mikro-orm/knex": "^5.6.14",
+    "@mikro-orm/migrations": "^5.6.14",
+    "@mikro-orm/postgresql": "^5.6.14",
+    "@mikro-orm/seeder": "^5.6.14",
+    "@types/express": "^4.17.14",
+    "@types/node": "^14.18.33",
+    "body-parser": "^1.19.0",
+    "chalk": "^4.1.2",
+    "cron": "^2.2.0",
+    "dotenv": "^8.6.0",
+    "express": "^4.18.2",
+    "mikro-orm": "^5.6.9",
+    "nodemon": "^2.0.20",
+    "pg": "^8.8.0",
+    "reflect-metadata": "^0.1.13",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^3.14.1",
+    "typedi": "^0.8.0",
+    "typescript": "^4.8.4",
+    "winston": "^3.8.2"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.4.1",
+    "prettier": "^2.7.1",
+    "tslint": "^5.20.1"
+  }
+}
