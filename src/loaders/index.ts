@@ -6,7 +6,7 @@ export default async ({ expressApp }) => {
   try {
     const orm = await dbLoader();
 
-    dependencyInjectorLoader();
+    dependencyInjectorLoader(orm);
 
     const app = await expressLoader({ app: expressApp });
 

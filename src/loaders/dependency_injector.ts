@@ -1,9 +1,9 @@
 import { Container } from 'typedi';
 import LoggerInstance from './logger_loader';
-import FactoryService from '@/services/factory_service';
+//import FactoryService from '@/services/factory_service';
 import SprocketService from '@/services/sprocket_service';
 
-const dependencyInjector = () => {
+const dependencyInjector = (orm) => {
   const log = LoggerInstance.info;
   const chalk = require('chalk');
   const yellow = chalk.yellow;
@@ -12,8 +12,9 @@ const dependencyInjector = () => {
   log(yellow('========================INJECTING ORM AND SERVICES====================='));
   log(yellow('======================================================================='));
   try {
+    Container.set('em', orm.em);
     Container.set('logger', LoggerInstance);
-    Container.set('factoryService', FactoryService);
+    //Container.set('factoryService', FactoryService);
     Container.set('sprocketService', SprocketService);
     log(green('======================================================================='));
     log(green('=====================ORM AND SERVICE INJECTION COMPLETE================'));

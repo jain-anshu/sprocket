@@ -16,7 +16,8 @@ export default class SprocketService {
       await this.em.clear();
       return sprocket;
     } catch (e) {
-      this.logger.error(`error $o`, e);
+      this.logger.log(`${sprocketData}`)
+      this.logger.error(`error eon $o`, e);
       throw new Error(e);
     }
   }

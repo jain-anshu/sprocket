@@ -19,9 +19,6 @@ export class Sprocket extends CustomBaseEntity {
   @Property({ type: 'int' })
   pitch: number;
 
-  @OneToMany(() => FactorySprocket, chartData => chartData.sprocket)
-  chartData = new Collection<FactorySprocket>(this);
-
   constructor(teeth: number, pitchDiameter: number, outsideDiameter: number, pitch: number) {
     super();
     this.teeth = teeth;

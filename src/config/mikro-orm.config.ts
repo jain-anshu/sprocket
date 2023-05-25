@@ -1,9 +1,7 @@
 import path from 'path';
 import { TSMigrationGenerator } from '@mikro-orm/migrations';
 import { Options, UnderscoreNamingStrategy } from '@mikro-orm/core';
-import {Factory} from '../models/Factory';
 import {Sprocket} from '../models/Sprocket';
-import {FactorySprocket} from '../models/FactorySprocket';
 
 
 const dotenv = require('dotenv');
@@ -12,7 +10,7 @@ const dotenv = require('dotenv');
 const envFound = dotenv.config();
 // import { User } from "./entities/User";
 const mikroOrmConfig: Options = {
-  entities: [Factory, Sprocket, FactorySprocket],
+  entities: [Sprocket], // [Factory, FactorySprocket],
   migrations: {
     // path: path.join(__dirname, "./migrations"), // path to the folder with migrations,
     path: path.join(__dirname, '../migrations'), // path to the folder with migrations,
@@ -41,11 +39,6 @@ const mikroOrmConfig: Options = {
   host: process.env.PSQL_DB_ENDPOINT,
   user: process.env.PSQL_DB_USERNAME,
   password: process.env.PSQL_DB_USER_PW,
-  // dbName: process.env.LOCAL_DEV_PSQL_DB_NAME,
-  // port: parseInt(process.env.LOCAL_DEV_PSQL_DB_PORT),
-  // host: process.env.LOCAL_DEV_PSQL_DB_ENDPOINT,
-  // user: process.env.LOCAL_DEV_PSQL_DB_USERNAME,
-  // password: process.env.LOCAL_DEV_PSQL_DB_USER_PW,
   allowGlobalContext: true,
   debug: process.env.NODE_ENV !== 'production',
   namingStrategy: UnderscoreNamingStrategy,
