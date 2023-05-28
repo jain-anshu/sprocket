@@ -1,4 +1,3 @@
-import { FactorySprocket } from './FactorySprocket';
 import { CustomBaseEntity } from './_CustomBaseEntity';
 import { Entity, Property, PrimaryKey, OneToMany, Collection } from '@mikro-orm/core';
 
@@ -11,19 +10,19 @@ export class Sprocket extends CustomBaseEntity {
   teeth: number;
 
   @Property({ type: 'int' })
-  pitchDiameter: number;
+  pitch_diameter: number;
 
   @Property({ type: 'int' })
-  outsideDiameter: number;
+  outside_diameter: number;
 
   @Property({ type: 'int' })
   pitch: number;
 
-  constructor(teeth: number, pitchDiameter: number, outsideDiameter: number, pitch: number) {
+  constructor(teeth: number, pitch_diameter: number, outside_diameter: number, pitch: number) {
     super();
     this.teeth = teeth;
-    this.pitchDiameter = pitchDiameter;
-    this.outsideDiameter = outsideDiameter;
+    this.pitch_diameter = pitch_diameter;
+    this.outside_diameter = outside_diameter;
     this.pitch = pitch;
   }
 }

@@ -18,7 +18,7 @@ export class Production extends CustomBaseEntity {
   @Property({ type: 'int' })
   factory_id: number;
 
-  constructor(actual_production: number, production_goal: number, time: number, factory_id: number) {
+  constructor(actual_production: number, production_goal: number,  factory_id: number, time: number ) {
     super();
     this.actual_production = actual_production;
     this.production_goal = production_goal;

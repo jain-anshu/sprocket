@@ -1,6 +1,6 @@
 import type { EntityManager } from '@mikro-orm/core';
 import { faker, Seeder } from '@mikro-orm/seeder';
-import { Sprocket } from '@/models/Sprocket';
+import { Production } from '@/models/Production';
 
 const factories =  [
       {
@@ -225,10 +225,15 @@ const factories =  [
 export class ProductionSeeder extends Seeder {
   async run(em: EntityManager): Promise<void> {
     for (let i = 0; i < factories.length; i++) {
-      const { teeth, pitchDiameter, outsideDiameter, pitch } = factories[i];
-      await em.create(Sprocket, { teeth, pitchDiameter, outsideDiameter, pitch });
+      const chart = factories[i]["factory"]["chart_data"]
+      const { sprocket_production_actual, sprocket_production_goal, time } = chart;
+      for (let j = 0; j < sprocket_production_actual.length; j++) {
+        const actual_production = sprocket_production_actual[j]
+        const production_goal = sprocket_production_goal[j]
+        const factory_id = i
+        await em.create(Production, {actual_production, production_goal, factory_id, time: time[j] });
+      }
     }
-
     await em.flush();
   }
 }
