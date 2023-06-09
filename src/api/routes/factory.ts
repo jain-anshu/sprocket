@@ -1,7 +1,7 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import { Logger } from 'winston';
 import Container from 'typedi';
-//import FactoryService from '@/services/factory_service';
+import ProductionService from '@/services/production_service';
 
 const route = Router();
 
@@ -9,12 +9,12 @@ export default (app: Router) => {
   app.use('/v1/factory', route);
 
   const logger: Logger = Container.get('logger');
-  //const factoryService: FactoryService = Container.get(FactoryService);
+  const productionService: ProductionService = Container.get(ProductionService);
 
   route.get('/', async (req: Request, res: Response, next: NextFunction) => {
     try {
-    //  const factories = await factoryService.getAll();
-    //  res.status(200).json({ factories });
+      const productions = await productionService.getAll();
+      res.status(200).json({ productions });
     } catch (e) {
       logger.error('🔥 error %o', e);
       return next(e);
@@ -24,7 +24,11 @@ export default (app: Router) => {
   route.get('/:factoryId', async (req: Request, res: Response, next: NextFunction) => {
     try {
      // const factory = await factoryService.getById(parseInt(req.params.factoryId) as number);
-     // res.status(200).json({ factory });
+     const productions = await productionService.getAll();
+     const factory_productions = productions.filter(p => p.factory_id == (parseInt(req.params.factoryId) - 1))
+     console.log(factory_productions)
+      
+     res.status(200).json(factory_productions);
     } catch (e) {
       logger.error('🔥 error %o', e);
       return next(e);

@@ -1,6 +1,6 @@
 import { Container } from 'typedi';
 import LoggerInstance from './logger_loader';
-//import FactoryService from '@/services/factory_service';
+import ProductionService from '@/services/production_service';
 import SprocketService from '@/services/sprocket_service';
 
 const dependencyInjector = (orm) => {
@@ -14,7 +14,7 @@ const dependencyInjector = (orm) => {
   try {
     Container.set('em', orm.em);
     Container.set('logger', LoggerInstance);
-    //Container.set('factoryService', FactoryService);
+    Container.set('productionService', ProductionService);
     Container.set('sprocketService', SprocketService);
     log(green('======================================================================='));
     log(green('=====================ORM AND SERVICE INJECTION COMPLETE================'));

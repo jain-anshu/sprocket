@@ -1,16 +1,15 @@
 import path from 'path';
 import { TSMigrationGenerator } from '@mikro-orm/migrations';
 import { Options, UnderscoreNamingStrategy } from '@mikro-orm/core';
-import {Sprocket} from '../models/Sprocket';
+import {Sprocket} from '@/models/Sprocket';
+import { Production } from '@/models/Production';
 
 
 const dotenv = require('dotenv');
-// Set the NODE_ENV to 'development' by default
 
 const envFound = dotenv.config();
-// import { User } from "./entities/User";
 const mikroOrmConfig: Options = {
-  entities: [Sprocket], // [Factory, FactorySprocket],
+  entities: [Sprocket, Production], // [Factory, FactorySprocket],
   migrations: {
     // path: path.join(__dirname, "./migrations"), // path to the folder with migrations,
     path: path.join(__dirname, '../migrations'), // path to the folder with migrations,
